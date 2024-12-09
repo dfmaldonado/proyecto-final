@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo de Dijkstra</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/app3.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Algoritmo de Dijkstra</h1>
+        <p>Encuentra el camino más corto desde un nodo origen.</p>
+    </header>
+    <main>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">Atrás</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Formulario para ingresar nodos y conexiones -->
+        <section>
+            <h2>Ingresar Grafo</h2>
+            <form id="formGrafo">
+                <label for="nodo">Nodo:</label>
+                <input type="text" id="nodo" placeholder="Nombre del nodo" required>
+                
+                <label for="conexiones">Conexiones (formato: nodo1:distancia,nodo2:distancia):</label>
+                <input type="text" id="conexiones" placeholder="Ejemplo: B:1,C:4" required>
+                
+                <button type="button" id="btnIngresar">Ingresar</button>
+            </form>
+        </section>
+
+        <!-- Botones para probar y limpiar -->
+        <button id="btnProbar" onclick="testDijkstra()">Probar Dijkstra</button>
+        <button id="btnClear" onclick="clearResultado()">Clear</button>
+
+        <!-- Resultado del algoritmo -->
+        <p id="resultado"></p>
+    </main>
+</body>
+</html>
