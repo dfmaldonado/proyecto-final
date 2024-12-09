@@ -20,9 +20,26 @@
                 </li>
             </ul>
         </nav>
-        
-        <button onclick="testKruskal()">Probar Kruskal</button>
-        <p id="resultado-kruskal"></p>
+
+        <section>
+            <h2>Instrucciones para Ingresar los Nodos y Aristas</h2>
+            <p>Por favor, ingresa los nodos y las aristas de tu grafo en el siguiente formato:</p>
+            <p><strong>Formato:</strong> Nodos: <code>[A, B, C, D]</code> y Aristas: <code>[A, B, peso], [A, C, peso], ...</code></p>
+            <p>Ejemplo: Si tienes un grafo con 4 nodos (A, B, C, D) y aristas (A, B, 3), (B, C, 4), (C, D, 2), debes ingresar:</p>
+            <p><strong>Grafo de ejemplo:</strong> <code>[[0, 3, Infinity, Infinity], [3, 0, 4, Infinity], [Infinity, 4, 0, 2], [Infinity, Infinity, 2, 0]]</code></p>
+
+            <h3>Ingresa tu Grafo</h3>
+            <label for="nodos">Nodos:</label>
+            <input type="text" id="nodos" placeholder="Ejemplo: A, B, C, D">
+            <br><br>
+            <label for="aristas">Aristas (Formato: [Nodo1, Nodo2, Peso]):</label>
+            <textarea id="aristas" rows="5" placeholder="Ejemplo: [A, B, 3], [B, C, 4]"></textarea>
+            <br><br>
+            <button onclick="procesarGrafo()">Procesar Grafo</button>
+
+            <h3>Árbol de Expansión Mínima:</h3>
+            <p id="resultado-kruskal"></p>
+        </section>
     </main>
 </body>
 </html>

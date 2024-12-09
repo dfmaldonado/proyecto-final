@@ -21,7 +21,17 @@
             </ul>
         </nav>
         
-        <button onclick="testFloydWarshall()">Probar Floyd-Warshall</button>
+        <div>
+            <h2>Ingresa los datos del grafo</h2>
+            <p>Introduce los valores de la matriz de adyacencia, donde "Infinity" representa la ausencia de camino entre nodos.</p>
+            <p>Ejemplo: Para un grafo de 4 nodos, ingresa una matriz de 4x4.</p>
+            
+            <!-- Formulario para ingresar el grafo -->
+            <textarea id="grafo-input" rows="6" cols="50" placeholder="Introduce la matriz del grafo, por ejemplo: 0 3 Infinity 7, 8 0 2 Infinity, 5 Infinity 0 1, 2 Infinity Infinity 0"></textarea>
+            <br>
+            <button onclick="probarFloydWarshallConDatos()">Probar Floyd-Warshall</button>
+        </div>
+
         <p id="resultado-floyd-warshall"></p>
     </main>
 </body>

@@ -16,16 +16,38 @@ function floydWarshall(grafo) {
     return dist;
 }
 
-// Función que prueba el algoritmo con un grafo de ejemplo
-function testFloydWarshall() {
-    const grafo = [
-        [0, 3, Infinity, 7],
-        [8, 0, 2, Infinity],
-        [5, Infinity, 0, 1],
-        [2, Infinity, Infinity, 0]
-    ];
+// Función para procesar la entrada del usuario y convertirla en una matriz
+function procesarGrafo(input) {
+    const filas = input.trim().split('\n');
+    const grafo = [];
 
+    filas.forEach(fila => {
+        const filaNumeros = fila.split(' ').map(valor => {
+            return valor === 'Infinity' ? Infinity : parseInt(valor, 10);
+        });
+        grafo.push(filaNumeros);
+    });
+
+    return grafo;
+}
+
+// Función que prueba el algoritmo con los datos del usuario
+function probarFloydWarshallConDatos() {
+    const input = document.getElementById('grafo-input').value;
+    
+    // Procesar la entrada del usuario
+    const grafo = procesarGrafo(input);
+
+    // Verificar que la matriz esté correctamente formada
+    if (grafo.length === 0 || grafo.some(fila => fila.length !== grafo.length)) {
+        alert("Por favor, ingresa una matriz cuadrada válida.");
+        return;
+    }
+
+    // Ejecutar el algoritmo de Floyd-Warshall
     const resultado = floydWarshall(grafo);
+
+    // Mostrar el resultado
     document.getElementById('resultado-floyd-warshall').innerText = 
         `Matriz de distancias: ${JSON.stringify(resultado)}`;
 }

@@ -37,15 +37,15 @@ function prim(grafo) {
     return resultado;
 }
 
-// Función que prueba el algoritmo con un grafo de ejemplo
-function testPrim() {
-    const grafo = [
-        [0, 2, 0, 6, 0],
-        [2, 0, 3, 8, 5],
-        [0, 3, 0, 0, 7],
-        [6, 8, 0, 0, 9],
-        [0, 5, 7, 9, 0]
-    ];
+// Función para procesar los datos ingresados por el usuario
+function procesarGrafo() {
+    const input = document.getElementById('matriz-adyacencia').value.trim();
+    const filas = input.split('\n'); // Dividimos por filas
+    const grafo = filas.map(fila => {
+        return fila.split(',').map(valor => {
+            return valor.trim() === 'Infinity' ? Infinity : parseInt(valor.trim(), 10);
+        });
+    });
 
     const resultado = prim(grafo);
     document.getElementById('resultado-prim').innerText = 

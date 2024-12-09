@@ -1,5 +1,4 @@
-// Grafo KRUSKAL
-
+// Función para encontrar el conjunto representativo de un nodo
 function find(parent, i) {
     if (parent[i] === i) {
         return i;
@@ -24,7 +23,7 @@ function union(parent, rank, x, y) {
     }
 }
 
-// Algoritmo de Kruskal
+// Función principal del algoritmo de Kruskal
 function kruskal(grafo, n) {
     let resultado = [];
     let parent = [];
@@ -64,18 +63,27 @@ function kruskal(grafo, n) {
     return resultado;
 }
 
-// Función que prueba el algoritmo con un grafo de ejemplo
-function testKruskal() {
-    const grafo = [
-        [0, 2, Infinity, 6, Infinity],
-        [2, 0, 3, 8, 5],
-        [Infinity, 3, 0, Infinity, 7],
-        [6, 8, Infinity, 0, 9],
-        [Infinity, 5, 7, 9, 0]
-    ];
+// Función para procesar el grafo ingresado por el usuario
+function procesarGrafo() {
+    const nodos = document.getElementById("nodos").value.split(',').map(e => e.trim());
+    const aristas = document.getElementById("aristas").value.split('],').map(e => e.trim()).map(e => e.replace(']', '')).map(e => e.split(',').map(e => e.trim()));
 
-    const n = grafo.length;
+    const n = nodos.length;
+    const grafo = Array(n).fill().map(() => Array(n).fill(Infinity));
+
+    // Asignamos los valores de las aristas en la matriz
+    aristas.forEach(arista => {
+        const [nodo1, nodo2, peso] = arista;
+        const i = nodos.indexOf(nodo1);
+        const j = nodos.indexOf(nodo2);
+        grafo[i][j] = parseInt(peso);
+        grafo[j][i] = parseInt(peso);  // Grafo no dirigido
+    });
+
+    // Ejecutamos el algoritmo de Kruskal
     const resultado = kruskal(grafo, n);
-    document.getElementById('resultado-kruskal').innerText = 
-        `Árbol de expansión mínima: ${JSON.stringify(resultado)}`;
+
+    // Mostramos el resultado
+    document.getElementById("resultado-kruskal").innerText = 
+        `Árbol de Expansión Mínima: ${JSON.stringify(resultado)}`;
 }
